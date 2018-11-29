@@ -4,9 +4,16 @@ import torchvisions.transforms as transforms
 
 # Load in CIFAR10
 
+# here, we turn the data into a tensor then normalize
+
 transform transforms.Compose(
 	[transforms.ToTensor(),
 	transforms.Normalize((0.5, 0.5, 05), (0.5, 0.5, 0.5))])
+
+# root defines where the data is
+# train defines whether this is training data
+# download defines whether we want to download the data
+# transform defines some sort of preprocessing step
 
 trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
 	download=True, transform=transform)
@@ -130,4 +137,3 @@ with torch.no_grad():
 for i in range(10):
 	print('Accuracy of %5s : %2d %%' % (
         classes[i], 100 * class_correct[i] / class_total[i]))
-
